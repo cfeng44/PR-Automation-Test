@@ -1,5 +1,5 @@
 # ---------------------------------------------------------
-#   File:         PR_Review_Automation.yaml
+#   File:         PR-To-ADO.yaml
 #   Author:       Codey Funston [s222250824@deakin.edu.au]
 # 
 #   Description:  Creates Azure DevOps task for each PR
@@ -13,18 +13,32 @@
     
     jobs:
       POST-to-Azure-DevOps-API:
-        runs-on: ubuntu-latest
+        runs-on: windows-latest
     
         steps:
-          - name: Checkout Preferences File
+          - name: Checkout Preferences File From Cyber Repo
             uses: actions/checkout@v4
             with:
-              sparse-checkout: |
-                .github/workflows/data/round-robi-file
-              sparse-checkout-cone-mode: false
-    
+              repository: "Redback-Operations/redback-cyber"
+              path: "redback-cyber"
+
           - name: Get Next Team Member
             run: |
+              $path = "redback-cyber/.github/workflows/data/PR_Preferences.json"
+              $this_repo = ${{ github.repository}}
+              $review_team = @()
+
+              $preferences = Get-Content -Raw $path | ConvertFrom-Json -AsHashtable
+
+              foreach ($team_member in $preferences.Keys) 
+              {
+                if ($preferences[$key] -eq $this_repo) 
+                {
+                    review_team += $preferences[$key]
+                }
+              }
+
+
              # if github.current repo is in user pref: assign to them
              # else assign to "all"
     
