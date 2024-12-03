@@ -38,7 +38,7 @@
                 {
                   if ($preferences[$team_member] -eq $this_repo) 
                   {
-                    $review_team += $preferences[$team_member]
+                    $review_team += $team_member
                   }
                 }
 
