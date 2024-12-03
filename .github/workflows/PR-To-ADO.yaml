@@ -47,7 +47,9 @@
                     Write-Host "Yep"
                 }
 
-                Write-Host $review_team.ToString()
+                foreach ($x in $review_team){
+                Write-Host $x
+                }
 
 
              # if github.current repo is in user pref: assign to them
