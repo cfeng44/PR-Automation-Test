@@ -29,7 +29,7 @@
             run: |
                 # $path = "redback-cyber/.github/workflows/data/PR_Preferences.json"
                 $path = "actions-testing/test.json"
-                $this_repo = ${{ github.repository}}
+                $this_repo = "${{ github.repository}}""
                 $review_team = @()
                 
                 $preferences = Get-Content -Raw $path | ConvertFrom-Json -AsHashtable
