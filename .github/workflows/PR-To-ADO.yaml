@@ -47,6 +47,8 @@
                     Write-Host "Yep"
                 }
 
+                Write-Host $review_team.ToString()
+
 
              # if github.current repo is in user pref: assign to them
              # else assign to "all"
