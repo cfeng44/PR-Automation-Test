@@ -114,7 +114,7 @@
               ]
               "@
 
-              $headers = @ {
+              $headers = @{
                 "Authorization" = "Bearer $PAT_TOKEN"
                 "Content-Type" = "application/json-patch+json"
               }
