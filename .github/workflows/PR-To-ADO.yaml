@@ -77,7 +77,7 @@
               $TYPE =       "task"
     
               $USER =       "s222250824@deakin.edu.au"
-              $PAT_TOKEN = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":$($env:PAT_TOKEN)"))
+              $PAT = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":$($env:PAT_TOKEN)"))
               $PR_TITLE = $env:PR_TITLE
               $LINK = $env:LINK
               $TASK_DESC = $env:TASK_DESC
@@ -120,7 +120,7 @@
               "@
 
               $headers = @{
-                "Authorization" = "Basic $PAT_TOKEN"
+                "Authorization" = "Basic $PAT"
                 "Content-Type" = "application/json-patch+json"
               }
 
