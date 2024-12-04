@@ -89,35 +89,9 @@
                 {
                   "op": "add",
                   "path": "/fields/System.Title",
-                  "from": null,
-                  "value": "$PR_TITLE"
-                },
-                {
-                  "op": "add",
-                  "path": "/fields/System.AssignedTo",
-                  "from": null,
-                  "value": "$USER"
-                },
-                {
-                  "op": "add",
-                  "path": "/fields/System.Description",
-                  "from": null,
-                  "value": "$TASK_DESC"
-                },
-                {
-                  "op": "add",
-                  "path": "/fields/System.AreaPath",
-                  "from": null,
-                  "value": "$AREA_PATH"
-                },
-                {
-                  "op": "add",
-                  "path": "/fields/System.Tag",
-                  "from": null,
-                  "value": "$TAG"
+                  "value": "test title wed"
                 }
-              ]
-              "@
+              ]"
 
               $headers = @{
                 "Authorization" = "Basic $PAT"
