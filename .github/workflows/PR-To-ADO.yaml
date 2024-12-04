@@ -123,7 +123,7 @@
 
               Write-Host "https://dev.azure.com/$ORG/$PROJECT/_apis/wit/workitems/`$$($TYPE)?$NOTIF&$API_VER"
 
-              Invoke-RestMethod -Uri "https://dev.azure.com/$ORG/$PROJECT/_apis/wit/workitems/`$$TYPE?$NOTIF&$API_VER" `
+              Invoke-RestMethod -Uri "https://dev.azure.com/$ORG/$PROJECT/_apis/wit/workitems/`$$($TYPE)?$NOTIF&$API_VER" `
                                 -Method Post `
                                 -Headers $headers `
                                 -Body $body
