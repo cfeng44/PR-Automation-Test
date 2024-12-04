@@ -17,105 +17,105 @@
         runs-on: windows-latest
     
         steps:
-          - name: Checkout Preferences File From Cyber Repo
-            uses: actions/checkout@v4
-            with:
-            #   repository: "Redback-Operations/redback-cyber"
-            #   path: "redback-cyber"
-              repository: "cfeng44/actions-testing"
-              path: "actions-testing"
+        #   - name: Checkout Preferences File From Cyber Repo
+        #     uses: actions/checkout@v4
+        #     with:
+        #     #   repository: "Redback-Operations/redback-cyber"
+        #     #   path: "redback-cyber"
+        #       repository: "cfeng44/actions-testing"
+        #       path: "actions-testing"
 
-          - name: Get Next Team Member
-            run: |
-                # $path = "redback-cyber/.github/workflows/data/PR_Preferences.json"
-                $path = "actions-testing/test.json"
-                $this_repo = "${{ github.repository}}"
-                $review_team = @()
+        #   - name: Get Next Team Member
+        #     run: |
+        #         # $path = "redback-cyber/.github/workflows/data/PR_Preferences.json"
+        #         $path = "actions-testing/test.json"
+        #         $this_repo = "${{ github.repository}}"
+        #         $review_team = @()
                 
-                $preferences = Get-Content -Raw $path | ConvertFrom-Json -AsHashtable
+        #         $preferences = Get-Content -Raw $path | ConvertFrom-Json -AsHashtable
                 
-                foreach ($team_member in $preferences.Keys) 
-                {
-                  if ($preferences[$team_member] -eq $this_repo) 
-                  {
-                    $review_team += $team_member
-                  }
-                }
+        #         foreach ($team_member in $preferences.Keys) 
+        #         {
+        #           if ($preferences[$team_member] -eq $this_repo) 
+        #           {
+        #             $review_team += $team_member
+        #           }
+        #         }
 
-                if ($review_team.Count -gt 0) 
-                {
-                    Write-Host "Yep"
-                }
+        #         if ($review_team.Count -gt 0) 
+        #         {
+        #             Write-Host "Yep"
+        #         }
 
-                foreach ($x in $review_team){
-                Write-Host $x
-                }
+        #         foreach ($x in $review_team){
+        #         Write-Host $x
+        #         }
 
 
              # if github.current repo is in user pref: assign to them
              # else assign to "all"
     
-        #   - name: Create Task
-        #     run: |
-        #       # URI Params
-        #       $ORG:        "redbackoperations"
-        #       $PROJECT:    "Cybersecurity"
-        #       $TEAM:       "SecDevOps"
-        #       $API_VER:    "api-version=7.1"
-        #       $NOTIF:      "suppressNotifications={true}"
-        #       $TYPE:       "task"
+          - name: Create Task
+            run: |
+              # URI Params
+              $ORG:        "redbackoperations"
+              $PROJECT:    "Cybersecurity"
+              $TEAM:       "SecDevOps"
+              $API_VER:    "api-version=7.1"
+              $NOTIF:      "suppressNotifications={true}"
+              $TYPE:       "task"
     
-        #       $USER:       "${RND_USER}"
-        #       $PAT_TOKEN:  "${{ secrets.AZUREDEVOPSPAT }}"
-        #       $PR_TITLE:   "PR: ${{ github.event.pull_request.title }}"
-        #       $LINK:       "${{ github.event.pull_request.url}}"
-        #       $TASK_DESC:  "${{ github.event.pull_request.body}} --> ${LINK}"
-        #       $AREA_PATH:  "Cybersecurity\\SecDevOps Team\\Pull Requests"
-        #       $TAG:        "PR"
+              $USER:       "s222250824@deakin.edu.au"
+              $PAT_TOKEN:  "${{ secrets.AZUREDEVOPSPAT }}"
+              $PR_TITLE:   "PR: ${{ github.event.pull_request.title }}"
+              $LINK:       "${{ github.event.pull_request.url}}"
+              $TASK_DESC:  "${{ github.event.pull_request.body}} --> ${LINK}"
+              $AREA_PATH:  "Cybersecurity\\SecDevOps Team\\Pull Requests"
+              $TAG:        "PR"
 
-        #       $body = @"
-        #       [
-        #         {
-        #           "op": "add",
-        #           "path": "/fields/System.Title",
-        #           "from": null,
-        #           "value": "$PR_TITLE"
-        #         },
-        #         {
-        #           "op": "add",
-        #           "path": "/fields/System.AssignedTo",
-        #           "from": null,
-        #           "value": "$USER"
-        #         },
-        #         {
-        #           "op": "add",
-        #           "path": "/fields/System.Description",
-        #           "from": null,
-        #           "value": "$TASK_DESC"
-        #         },
-        #         {
-        #           "op": "add",
-        #           "path": "/fields/System.AreaPath",
-        #           "from": null,
-        #           "value": "$AREA_PATH"
-        #         },
-        #         {
-        #           "op": "add",
-        #           "path": "/fields/System.Tag",
-        #           "from": null,
-        #           "value": "$TAG"
-        #         }
-        #       ]"@
+              $body = @"
+              [
+                {
+                  "op": "add",
+                  "path": "/fields/System.Title",
+                  "from": null,
+                  "value": "$PR_TITLE"
+                },
+                {
+                  "op": "add",
+                  "path": "/fields/System.AssignedTo",
+                  "from": null,
+                  "value": "$USER"
+                },
+                {
+                  "op": "add",
+                  "path": "/fields/System.Description",
+                  "from": null,
+                  "value": "$TASK_DESC"
+                },
+                {
+                  "op": "add",
+                  "path": "/fields/System.AreaPath",
+                  "from": null,
+                  "value": "$AREA_PATH"
+                },
+                {
+                  "op": "add",
+                  "path": "/fields/System.Tag",
+                  "from": null,
+                  "value": "$TAG"
+                }
+              ]"@
 
-        #       $headers = @ {
-        #         "Authorization" = "Bearer $PAT_TOKEN"
-        #         "Content-Type" = "application/json-patch+json"
-        #       }
+              $headers = @ {
+                "Authorization" = "Bearer $PAT_TOKEN"
+                "Content-Type" = "application/json-patch+json"
+              }
 
-        #       Invoke-RestMethod -Uri "https://dev.azure.com/$ORG/$PROJECT/_apis/wit/workitems/\$$TYPE?$NOTIF&$API_VER" `
-        #                         -Method Post `
-        #                         -Headers $headers `
-        #                         -Body $body
+              Invoke-RestMethod -Uri "https://dev.azure.com/$ORG/$PROJECT/_apis/wit/workitems/\$$TYPE?$NOTIF&$API_VER" `
+                                -Method Post `
+                                -Headers $headers `
+                                -Body $body
             
               
     
