@@ -56,6 +56,12 @@
              # else assign to "all"
     
           - name: Create Task
+            env:
+              PAT_TOKEN:   "${{ secrets.AZUREDEVOPSPAT }}"
+              PR_TITLE:    "PR: ${{ github.event.pull_request.title }}"
+              LINK:        "${{ github.event.pull_request.url}}"
+              TASK_DESC:   "${{ github.event.pull_request.body}} --> ${LINK}"
+
             run: |
               # URI Params
               $ORG =        "redbackoperations"
@@ -66,10 +72,10 @@
               $TYPE =       "task"
     
               $USER =       "s222250824@deakin.edu.au"
-              $PAT_TOKEN =  "${{ secrets.AZUREDEVOPSPAT }}"
-              $PR_TITLE =   "PR: ${{ github.event.pull_request.title }}"
-              $LINK =       "${{ github.event.pull_request.url}}"
-              $TASK_DESC =  "${{ github.event.pull_request.body}} --> ${LINK}"
+              $PAT_TOKEN = $env:PAT_TOKEN
+              $PR_TITLE = $env:PR_TITLE
+              $LINK = $env:LINK
+              $TASK_DESC = $env:TASK_DESC
               $AREA_PATH =  "Cybersecurity\\SecDevOps Team\\Pull Requests"
               $TAG =        "PR"
 
@@ -105,7 +111,8 @@
                   "from": null,
                   "value": "$TAG"
                 }
-              ]"@
+              ]
+              "@
 
               $headers = @ {
                 "Authorization" = "Bearer $PAT_TOKEN"
