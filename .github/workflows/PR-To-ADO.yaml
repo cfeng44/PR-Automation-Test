@@ -9,7 +9,7 @@
     name: Pull Request Review Setup
 
     # Runs on every PR in main branch.
-    # on: [pull_request]
+    # on: [pull_request]sss
     on: [push]
     
     jobs:
@@ -117,9 +117,6 @@
               $headers = @{
                 "Authorization" = "Basic $PAT"
               }
-
-              Write-Output $PAT
-              Write-Output "https://dev.azure.com/$ORG/$PROJECT/_apis/wit/workitems/`$$($TYPE)?$NOTIF&$API_VER"
 
               Invoke-RestMethod -Uri "https://dev.azure.com/$ORG/$PROJECT/_apis/wit/workitems/`$$($TYPE)?$API_VER" `
                                 -Method Post `
