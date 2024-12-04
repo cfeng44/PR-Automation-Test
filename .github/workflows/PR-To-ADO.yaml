@@ -58,20 +58,20 @@
           - name: Create Task
             run: |
               # URI Params
-              $ORG:        "redbackoperations"
-              $PROJECT:    "Cybersecurity"
-              $TEAM:       "SecDevOps"
-              $API_VER:    "api-version=7.1"
-              $NOTIF:      "suppressNotifications={true}"
-              $TYPE:       "task"
+              $ORG =        "redbackoperations"
+              $PROJECT =    "Cybersecurity"
+              $TEAM =       "SecDevOps"
+              $API_VER =    "api-version=7.1"
+              $NOTIF =      "suppressNotifications={true}"
+              $TYPE =       "task"
     
-              $USER:       "s222250824@deakin.edu.au"
-              $PAT_TOKEN:  "${{ secrets.AZUREDEVOPSPAT }}"
-              $PR_TITLE:   "PR: ${{ github.event.pull_request.title }}"
-              $LINK:       "${{ github.event.pull_request.url}}"
-              $TASK_DESC:  "${{ github.event.pull_request.body}} --> ${LINK}"
-              $AREA_PATH:  "Cybersecurity\\SecDevOps Team\\Pull Requests"
-              $TAG:        "PR"
+              $USER =       "s222250824@deakin.edu.au"
+              $PAT_TOKEN =  "${{ secrets.AZUREDEVOPSPAT }}"
+              $PR_TITLE =   "PR: ${{ github.event.pull_request.title }}"
+              $LINK =       "${{ github.event.pull_request.url}}"
+              $TASK_DESC =  "${{ github.event.pull_request.body}} --> ${LINK}"
+              $AREA_PATH =  "Cybersecurity\\SecDevOps Team\\Pull Requests"
+              $TAG =        "PR"
 
               $body = @"
               [
