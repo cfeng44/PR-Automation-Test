@@ -96,7 +96,6 @@
 
               $headers = @{
                 "Authorization" = "Basic $PAT"
-                "Content-Type" = "application/json-patch+json"
               }
 
               Write-Output $PAT
@@ -106,6 +105,7 @@
                                 -Method Post `
                                 -Headers $headers `
                                 -Body $body
+                                -ContentType "application/json-patch+json"
             
               
     
