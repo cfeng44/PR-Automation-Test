@@ -53,7 +53,7 @@
 
 
              # if github.current repo is in user pref: assign to them
-             # else assign to "all"
+             # else assign to "all".
     
           - name: Create Task
             env:
