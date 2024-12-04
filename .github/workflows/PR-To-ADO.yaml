@@ -99,7 +99,8 @@
                 "Content-Type" = "application/json-patch+json"
               }
 
-              Write-Output $PAT_TOKEN
+              Write-Output $PAT
+              Write-Output "https://dev.azure.com/$ORG/$PROJECT/_apis/wit/workitems/`$$($TYPE)?$NOTIF&$API_VER"
 
               Invoke-RestMethod -Uri "https://dev.azure.com/$ORG/$PROJECT/_apis/wit/workitems/`$$($TYPE)?$NOTIF&$API_VER" `
                                 -Method Post `
