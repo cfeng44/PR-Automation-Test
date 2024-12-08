@@ -28,7 +28,10 @@
             id: select-reviewer-step
             shell: pwsh
             run: |
-              $team = ./actions-testing/Select-Reviewer.ps1 -Path "./.github/workflows/data/PR_Preferences.json"
+              ls ./actions-testing
+
+              $team = ./actions-testing/.github/workflows/scripts/Select-Reviewer.ps1 `
+              -Path "./.github/workflows/data/PR_Preferences.json"
               $env:TEAM = $team
     
           - name: Create Task
