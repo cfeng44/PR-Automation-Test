@@ -11,11 +11,11 @@
 # a list of valid reviewers.
 function Select-Reviewer {
     param (
-        [string]$Path
+        [string]$Path,
     )
 
     $team = @()
-    $thisRepo = "${{ github.repository}}"
+    $thisRepo = $env:REPO
     $preferences = Get-Content -Raw $path | ConvertFrom-Json -AsHashtable
 
     foreach ($member in $preferences.Keys) {

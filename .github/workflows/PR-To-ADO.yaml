@@ -27,6 +27,8 @@
           - name: Run Select-Reviewer Script
             id: select-reviewer-step
             shell: pwsh
+            env:
+              REPO: ${{ github.repository }}
             run: |
               ls ./actions-testing
 
