@@ -1,5 +1,5 @@
 # ---------------------------------------------------------
-#   File:         Select-Team.ps1
+#   File:         Select-Reviewer.ps1
 #   Author:       Codey Funston [s222250824@deakin.edu.au]
 # 
 #   Description:  Based on repository preferences, selects 
@@ -7,10 +7,11 @@
 #
 # ---------------------------------------------------------
 
+# Cross references current repositoy with team member preferences to produce a
+# a list of valid reviewers.
 function Select-Reviewer {
     param (
-        [Parameter(Mandatory)]
-        $path
+        [string]$Path
     )
 
     $team = @()
@@ -26,10 +27,11 @@ function Select-Reviewer {
     return $team
 }
 
-foreach ($x in $reviewTeam){
-Write-Host $x
+if ($MyInvocation.ScriptName -ne "") {
+    param(
+        [string]$Path
+    )
+
+    $team = Select-Reviewer -Path $path
+    return $team
 }
-
-
-# if github.current repo is in user pref: assign to them
-# else assign to "all".aa

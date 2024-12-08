@@ -9,15 +9,14 @@
     name: Pull Request Review Setup
 
     # Runs on every PR in main branch.
-    # on: [pull_request]sss
-    on: [push]
+    on: [pull_request]
     
     jobs:
       POST-to-Azure-DevOps-API:
         runs-on: windows-latest
     
         steps:
-          - name: Checkout Preferences File From Cyber Repo
+          - name: Checkout Preferences File and Scripts
             uses: actions/checkout@v4
             with:
             #   repository: "Redback-Operations/redback-cyber"
@@ -25,30 +24,10 @@
               repository: "cfeng44/actions-testing"
               path: "actions-testing"
 
-          - name: Get Next Team Member
+          - name: Run Select-Reviewer Script
+            id: select-reviewer-step
             run: |
-                # $path = "redback-cyber/.github/workflows/data/PR_Preferences.json"
-                $path = "actions-testing/test.json"
-                $this_repo = "${{ github.repository}}"
-                $review_team = @()
-                
-                $preferences = Get-Content -Raw $path | ConvertFrom-Json -AsHashtable
-                
-                foreach ($team_member in $preferences.Keys) 
-                {
-                  if ($preferences[$team_member] -eq $this_repo) 
-                  {
-                    $review_team += $team_member
-                  }
-                }
-
-                foreach ($x in $review_team){
-                Write-Host $x
-                }
-
-
-             # if github.current repo is in user pref: assign to them
-             # else assign to "all".aa
+              $team = 
     
           - name: Create Task
             env:
