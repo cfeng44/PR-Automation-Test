@@ -35,6 +35,7 @@
               $team = ./actions-testing/.github/workflows/scripts/Select-Reviewer.ps1 `
               -Path "./.github/workflows/data/PR_Preferences.json"
               $env:TEAM = $team
+              Write-Host $team
     
           - name: Create Task
             env:
