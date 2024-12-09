@@ -33,7 +33,8 @@
     
           - name: Create Task
             env:
-              PAT_TOKEN:   "${{ secrets.AZUREDEVOPSPAT }}"
+              # PAT_TOKEN:   "${{ secrets.AZUREDEVOPSPAT }}"
+              PAT_TOKEN: "6vGr5Zqo4827b2HCTrZHB0qRRlNXUtqsk73f0kjwXmCUH88ISKiWJQQJ99ALACAAAAArDC5SAAASAZDOeI7P"
               PR_TITLE:    "PR: ${{ github.event.pull_request.title }}"
               LINK:        "${{ github.event.pull_request.url}}"
               TASK_DESC:   "${{ github.event.pull_request.body}} --> ${LINK}"
