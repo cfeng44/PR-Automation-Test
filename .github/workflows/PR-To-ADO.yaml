@@ -41,7 +41,6 @@
 
             run: |
               ./actions-testing/.github/workflows/scripts/API-Request.ps1
-              Write-Host $env:PAT_TOKEN
             
               
     
