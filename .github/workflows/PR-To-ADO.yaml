@@ -13,7 +13,7 @@
     
     jobs:
       POST-to-Azure-DevOps-API:
-        runs-on: ubuntu-latest
+        runs-on: windows-latest
     
         steps:
           - name: Checkout Preferences File and Scripts
@@ -25,17 +25,15 @@
               path: "actions-testing"
 
           - name: Run Select-Reviewer Script
-            id: select-reviewer-step
-            shell: pwsh
             env:
               REPO: ${{ github.repository }}
             run: |
               Get-ChildItem ./actions-testing
+              Write-Host "test"
 
               ./actions-testing/.github/workflows/scripts/Select-Reviewer.ps1 -Path "./.github/workflows/data/PR_Preferences.json"
     
           - name: Create Task
-            shell: pwsh
             env:
               PAT_TOKEN:   "${{ secrets.AZUREDEVOPSPAT }}"
               PR_TITLE:    "PR: ${{ github.event.pull_request.title }}"
