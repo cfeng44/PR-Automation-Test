@@ -30,6 +30,9 @@
             run: |
               $team = ./actions-testing/.github/workflows/scripts/Select-Reviewer.ps1 -Path "./actions-testing/.github/workflows/data/PR_Preferences.json"
               $user = $team[0]
+              Write-Host $team
+              Write-Host "---"
+              Write-Host $user
               echo "USER_GH=$user" >> $GITHUB_ENV
     
           - name: Create Task
