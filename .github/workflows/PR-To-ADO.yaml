@@ -42,8 +42,8 @@
 
             run: |
               ./actions-testing/.github/workflows/scripts/API-Request.ps1 -User $USER
-              Write-Host $USER
-              Write-Host $TESTER
+              Write-Host $env:USER
+              Write-Host $env:TESTER
             
               
     
