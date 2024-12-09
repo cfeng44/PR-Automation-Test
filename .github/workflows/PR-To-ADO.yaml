@@ -33,7 +33,7 @@
               Write-Host $team
               Write-Host "---"
               Write-Host $user
-              echo "USER_GH=$user" >> $GITHUB_ENV
+              echo "USER_GH=$user" >> "$GITHUB_ENV"
     
           - name: Create Task
             env:
