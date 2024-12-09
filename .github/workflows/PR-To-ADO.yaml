@@ -41,6 +41,7 @@
 
             run: |
               ./actions-testing/.github/workflows/scripts/API-Request.ps1 -User $USER_GH
+              Write-Host $USER_GH
             
               
     
