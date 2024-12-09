@@ -19,10 +19,8 @@
           - name: Checkout Preferences File and Scripts
             uses: actions/checkout@v4
             with:
-            #   repository: "Redback-Operations/redback-cyber"
-            #   path: "redback-cyber"
-              repository: "cfeng44/actions-testing"
-              path: "actions-testing"
+              repository: "Redback-Operations/redback-cyber"
+              path: "redback-cyber"
 
           - name: Run Select-Reviewer Script
             env:
@@ -35,7 +33,7 @@
           - name: Create Task
             env:
               # PAT_TOKEN:   "${{ secrets.AZUREDEVOPSPAT }}"
-              PAT_TOKEN: "6vGr5Zqo4827b2HCTrZHB0qRRlNXUtqsk73f0kjwXmCUH88ISKiWJQQJ99ALACAAAAArDC5SAAASAZDOeI7P"
+              PAT_TOKEN: "TOKEN_TO_BE_PLACED_IN_REPO"
               PR_TITLE:    "PR: ${{ github.event.pull_request.title }}"
               TASK_DESC:   "${{ github.event.pull_request.body}} --> ${{ github.event.pull_request.html_url}}"
 
