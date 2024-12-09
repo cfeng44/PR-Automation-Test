@@ -31,7 +31,7 @@
               Get-ChildItem ./actions-testing
               Write-Host "test"
 
-              ./actions-testing/.github/workflows/scripts/Select-Reviewer.ps1 -Path "./.github/workflows/data/PR_Preferences.json"
+              ./actions-testing/.github/workflows/scripts/Select-Reviewer.ps1 -Path "./actions-testing/.github/workflows/data/PR_Preferences.json"
     
           - name: Create Task
             env:
