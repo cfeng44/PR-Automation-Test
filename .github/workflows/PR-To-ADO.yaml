@@ -30,14 +30,12 @@
             env:
               REPO: ${{ github.repository }}
             run: |
-              ls ./actions-testing
+              Get-ChildItem ./actions-testing
 
-              $team = ./actions-testing/.github/workflows/scripts/Select-Reviewer.ps1 `
-              -Path "./.github/workflows/data/PR_Preferences.json"
-              $env:TEAM = $team
-              Write-Host $team
+              ./actions-testing/.github/workflows/scripts/Select-Reviewer.ps1 -Path "./.github/workflows/data/PR_Preferences.json"
     
           - name: Create Task
+            shell: pwsh
             env:
               PAT_TOKEN:   "${{ secrets.AZUREDEVOPSPAT }}"
               PR_TITLE:    "PR: ${{ github.event.pull_request.title }}"
