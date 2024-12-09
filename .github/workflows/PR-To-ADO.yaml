@@ -30,10 +30,8 @@
             run: |
               $team = ./actions-testing/.github/workflows/scripts/Select-Reviewer.ps1 -Path "./actions-testing/.github/workflows/data/PR_Preferences.json"
               $user = $team[0]
-              Write-Host $team
-              Write-Host "---"
-              Write-Host $user
               "USER=$user" | Out-File -FilePath $env:GITHUB_ENV -Append
+              "TESTER=hey" | Out-File -File_ath $env:GITHUB_ENV -Append
     
           - name: Create Task
             env:
@@ -43,8 +41,9 @@
               TASK_DESC:   "${{ github.event.pull_request.body}} --> ${{ github.event.pull_request.html_url}}"
 
             run: |
-              ./actions-testing/.github/workflows/scripts/API-Request.ps1 -User $USER_GH
+              ./actions-testing/.github/workflows/scripts/API-Request.ps1 -User $USER
               Write-Host $USER
+              Write-Host $TESTER
             
               
     
