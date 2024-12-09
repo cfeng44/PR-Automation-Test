@@ -31,7 +31,6 @@
               $team = ./actions-testing/.github/workflows/scripts/Select-Reviewer.ps1 -Path "./actions-testing/.github/workflows/data/PR_Preferences.json"
               $user = $team[0]
               "USER=$user" | Out-File -FilePath $env:GITHUB_ENV -Append
-              "TESTER=hey" | Out-File -FilePath $env:GITHUB_ENV -Append
     
           - name: Create Task
             env:
@@ -42,8 +41,3 @@
 
             run: |
               ./actions-testing/.github/workflows/scripts/API-Request.ps1 -User $env:USER
-              Write-Host $env:USER
-              Write-Host $env:TESTER
-            
-              
-    
